@@ -57,7 +57,7 @@ $nonceField = $WPNonce -> nonce_field();
 
 
 ```
-###Test either if the current request carries a valid nonce, or if the current request was referred from an administration screen
+###Nonce Field for echo
 
 ```php
 
