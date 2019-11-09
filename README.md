@@ -6,8 +6,6 @@ This Package that implements the WordPress Nonces functionality (wp_nonce_*()) i
 
 ##Usage
 
-add to your functions.php or plugins file
-
 ```php
 
 // Autoload files using Composer autoload
@@ -36,7 +34,6 @@ For example:
 
 ```php
 
-$WPNonce = new \Jim\WPNonce\Classes\WPNonce();
 $nonceVerify = $WPNonce -> validate();
 
 ```
@@ -44,7 +41,6 @@ $nonceVerify = $WPNonce -> validate();
 
 ```php
 
-$WPNonce = new \Jim\WPNonce\Classes\WPNonce();
 $nonceUrl = $WPNonce -> nonce_url();
 
 ```
@@ -52,7 +48,6 @@ $nonceUrl = $WPNonce -> nonce_url();
 
 ```php
 
-$WPNonce = new \Jim\WPNonce\Classes\WPNonce();
 $nonceField = $WPNonce -> nonce_field();
 
 
@@ -61,7 +56,6 @@ $nonceField = $WPNonce -> nonce_field();
 
 ```php
 
-$WPNonce = new \Jim\WPNonce\Classes\WPNonce();
 $checkAdminRefer = $WPNonce -> nonce_field_echo();
 
 ```
@@ -69,7 +63,6 @@ $checkAdminRefer = $WPNonce -> nonce_field_echo();
 
 ```php
 
-$WPNonce = new \Jim\WPNonce\Classes\WPNonce();
 $validate_nonce = $WPNonce -> validate_nonce();
 
 ```
