@@ -1,0 +1,30 @@
+{
+	"name": "jim/wpnonce",
+    "description": "An OOP implementation of WordPress Nonces. Included unit test case.",
+    "keywords": [
+        "wordpress", "nonce"
+    ],
+    "license": "GPLv2+",
+    "authors": [
+        {
+            "name": "Giancarlo Mosso",
+            "email": "giancarlo.mosso@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=7"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "8.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jim\\WPNonce\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "classmap": ["tests/"],
+        "files": ["tests/TestFunctions.php"]
+    }
+}
