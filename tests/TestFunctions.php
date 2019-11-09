@@ -90,3 +90,17 @@ function wp_verify_nonce( $nonce, $action = -1) {
     }
 }
 
+
+/**
+ * wp_nonce_url() fake function for test
+ * 
+ * @param $actionurl
+ * @param int $action
+ * @param string $name
+ * @return string
+ */
+function wp_nonce_url($actionurl, $action = -1, $name = '_wpnonce' ) {
+    $actionurl = str_replace( '&amp;', '&', $actionurl );
+    return esc_html( add_query_arg( $name, wp_create_nonce( $action ), $actionurl ) );
+}
+

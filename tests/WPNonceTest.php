@@ -123,6 +123,7 @@ class WPNonceTest extends TestCase
         $nfg = $this->test_gen1;
         $field_results = $nfg->nonce_field( false, false );
         $field_expected = '<input type="hidden" id="_wpnonce" name="_wpnonce" value="' . $this->test_nonce . '" />';
+        
         // result.
         $this->assertSame( $field_results, $field_expected);
     }
@@ -137,8 +138,8 @@ class WPNonceTest extends TestCase
         $field_results = $nfg->nonce_field( true, false );
         // Building the expected form fields.
         $field_expected = '<input type="hidden" id="_wpnonce" name="_wpnonce" value="' . $this->test_nonce . '" /><input type="hidden" name="_wp_http_referer" value="my-url" />';
-        // Checking result.
         
+        // Checking result.
         $this->assertSame( $field_results, $field_expected);
     }
 
@@ -154,8 +155,8 @@ class WPNonceTest extends TestCase
         $this->expectOutputString($field_expected);
         // Generating the form fields. The second parameter defaults to true.
         $field_results = $nfg->nonce_field( false );
-        // Checking result.
         
+        // Checking result.
         $this->assertSame( $field_results, $field_expected);
     }
 
@@ -173,13 +174,25 @@ class WPNonceTest extends TestCase
 
         // Generating the form fields. Both parameters defaults to true.
         $field_results = $nfg->nonce_field();
-        // Checking result.
         
+        // Checking result.
         $this->assertSame( $field_results, $field_expected);
     }
 
 
-   
+    /**
+     * Test the nonce_url method to build an url with a nonce query parameter to send via GET.
+     */
+    public function test_nonce_url(){
+        // Generate the nonce and build the url.
+        $field_results = $this->test_gen1->nonce_url( 'http://www.jimamun.com' );
+        // expected url.
+        $url_expected = 'http://www.jimamun.com?_wpnonce='. $this->test_nonce;
+        
+        // Checking result.
+        $this->assertSame( $field_results, $url_expected);
+    }
+
 
 }
 
