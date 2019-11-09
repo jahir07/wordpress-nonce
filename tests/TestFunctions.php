@@ -1,5 +1,5 @@
 <?php
-namespace Jim\WPNonce\Tests;
+namespace Jim\WPNonce\Classes;
 
 
 /**

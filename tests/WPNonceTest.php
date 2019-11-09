@@ -42,7 +42,7 @@ class WPNonceTest extends TestCase
  		$this->test_gen2 = new WPNonce( $this->test_action, $this->test_name );
  		
  		// Create nonce value.
- 		$this->test_nonce = \Jim\WPNonce\Tests\wp_create_nonce( $this->test_action );
+ 		$this->test_nonce = \Jim\WPNonce\Classes\wp_create_nonce( $this->test_action );
  	}
 
 	/**
@@ -92,7 +92,18 @@ class WPNonceTest extends TestCase
         $this->assertSame( '_wpnonce', $ng->get_name() );
     }
 
-    
+    /**
+     * Test the create_nonce method used for the straight generation of the nonce.
+     */
+    public function test_create_nonce() {
+        $ng = $this->test_gen1;
+        // Checking null value.
+        $this->assertNull( $ng->get_nonce() );
+        // Generating the nonce.
+        $nonce_generated = $ng->create_nonce();
+        // Check the nonce.
+        $this->assertSame( $nonce_generated, $this->test_nonce );
+    }
 
 
 }
