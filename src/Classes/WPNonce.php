@@ -110,6 +110,6 @@ class WPNonce extends NonceAbstract
         $is_valid = $this->validate();
         return $is_valid;
     }
-  
+
 
 }

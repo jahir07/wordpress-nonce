@@ -37,7 +37,7 @@ For example:
 ```php
 
 $WPNonce = new \Jim\WPNonce\Classes\WPNonce();
-$nonceVerify = $WPNonce -> verify_nonce();
+$nonceVerify = $WPNonce -> validate();
 
 ```
 ###Add a nonce to a URL
