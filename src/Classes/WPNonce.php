@@ -50,6 +50,22 @@ class WPNonce extends NonceAbstract
         return wp_nonce_field( $action, $name, $param_referer, $param_echo );
 
     }
+
+
+     /**
+     * Create nonce url string
+     *
+     * @return string
+     */
+    public function nonce_url($param_actionurl ) : string {
+        $this->create_nonce();
+
+        $name   = $this->get_name();
+        $action  = $this->get_action();
+        $actionurl = str_replace( '&amp;', '&', $param_actionurl );
+
+        return wp_nonce_url( $actionurl, $action, $name );
+    }
   
 
 }

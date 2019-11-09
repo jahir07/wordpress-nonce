@@ -127,6 +127,57 @@ class WPNonceTest extends TestCase
         $this->assertSame( $field_results, $field_expected);
     }
 
+    /**
+     * Test the generate nonce field referrer
+     */
+    public function test_nonce_field_referer(){
+
+        $nfg = $this->test_gen1;
+        // Generating the form fields.
+        $field_results = $nfg->nonce_field( true, false );
+        // Building the expected form fields.
+        $field_expected = '<input type="hidden" id="_wpnonce" name="_wpnonce" value="' . $this->test_nonce . '" /><input type="hidden" name="_wp_http_referer" value="my-url" />';
+        // Checking result.
+        
+        $this->assertSame( $field_results, $field_expected);
+    }
+
+    /**
+     * Test the nonce_field method by a nonce parameter to send via POST.
+     */
+    public function test_nonce_field_echo(){
+
+        $nfg = $this->test_gen1;
+        // Building the expected form field.
+        $field_expected = '<input type="hidden" id="_wpnonce" name="_wpnonce" value="' . $this->test_nonce . '" />';
+        // Check that the result is printed.
+        $this->expectOutputString($field_expected);
+        // Generating the form fields. The second parameter defaults to true.
+        $field_results = $nfg->nonce_field( false );
+        // Checking result.
+        
+        $this->assertSame( $field_results, $field_expected);
+    }
+
+    /**
+     * Test the nonce_field method by a nonce parameter to send via POST. 
+     */
+    public function test_nonce_field_referer_echo(){
+
+        $nfg = $this->test_gen1;
+        // Building the expected form fields.
+        $field_expected = '<input type="hidden" id="_wpnonce" name="_wpnonce" value="' . $this->test_nonce . '" /><input type="hidden" name="_wp_http_referer" value="my-url" />';
+
+        // Check that the result is printed.
+        $this->expectOutputString($field_expected);
+
+        // Generating the form fields. Both parameters defaults to true.
+        $field_results = $nfg->nonce_field();
+        // Checking result.
+        
+        $this->assertSame( $field_results, $field_expected);
+    }
+
 
 }
 
