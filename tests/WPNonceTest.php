@@ -105,6 +105,15 @@ class WPNonceTest extends TestCase
         $this->assertSame( $nonce_generated, $this->test_nonce );
     }
 
+    public function test_get_set_nonce() {
+
+        $nonce_generated = $this->test_gen1->create_nonce();
+
+        $this->test_gen1->set_nonce( 'get_set_new_nonce' );
+        $this->assertNotEquals( $nonce_generated, $this->test_gen1->get_nonce() );
+        $this->assertSame( 'get_set_new_nonce', $this->test_gen1->get_nonce() );
+    }
+
 
 }
 

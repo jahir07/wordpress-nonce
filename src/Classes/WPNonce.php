@@ -32,7 +32,4 @@ class WPNonce extends NonceAbstract
     }
 
 
-   
-
-
 }
