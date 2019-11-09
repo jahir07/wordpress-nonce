@@ -32,4 +32,24 @@ class WPNonce extends NonceAbstract
     }
 
 
+     /**
+     * wp_nonce_field - the nonce field html markup
+     *
+     * @param bool $param_referer
+     * @param bool $param_echo
+     * @return string
+     */
+    public function nonce_field($param_referer = true, $param_echo = true ) : string {
+
+        $this->create_nonce();
+        $name   = $this->get_name();
+        $action = $this->get_action();
+        $nonce  = $this->get_nonce();
+        $name = esc_attr( $name );
+
+        return wp_nonce_field( $action, $name, $param_referer, $param_echo );
+
+    }
+  
+
 }

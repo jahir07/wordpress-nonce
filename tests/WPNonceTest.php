@@ -115,6 +115,19 @@ class WPNonceTest extends TestCase
     }
 
 
+    /**
+     * Test the nonce field
+     */
+    public function test_nonce_field(){
+
+        $nfg = $this->test_gen1;
+        $field_results = $nfg->nonce_field( false, false );
+        $field_expected = '<input type="hidden" id="_wpnonce" name="_wpnonce" value="' . $this->test_nonce . '" />';
+        // result.
+        $this->assertSame( $field_results, $field_expected);
+    }
+
+
 }
 
 
