@@ -72,6 +72,21 @@ function wp_nonce_field($action = -1, $name = "_wpnonce", $referer = true , $ech
     return $nonce_field;
 }
 
+/**
+ * wp_verify_nonce() fake function for varify.
+ *
+ * @param string $nonce Nonce value.
+ * @param string $action Optional. Action value. Default value -1.
+ * @return boolean $is_valid true if the nonces is valid, false otherwise.
+ */
+function wp_verify_nonce( $nonce, $action = -1) {
 
+    $nonce_calc = substr( md5( $action ), -12, 10 );
 
+    if ( $nonce == $nonce_calc ) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
