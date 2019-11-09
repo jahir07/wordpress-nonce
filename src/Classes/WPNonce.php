@@ -26,7 +26,9 @@ class WPNonce extends NonceAbstract
      * @return string
      */
     public function create_nonce() : string {
-        return "testing";
+        $this->set_nonce( wp_create_nonce( $this->get_action() ) );
+        
+        return $this->get_nonce();
     }
 
 
