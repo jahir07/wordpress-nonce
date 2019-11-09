@@ -66,6 +66,50 @@ class WPNonce extends NonceAbstract
 
         return wp_nonce_url( $actionurl, $action, $name );
     }
+
+    /**
+     * Validate the nonce.
+     *
+     * @return    boolean $is_valid False if the nonce is invalid. Otherwise, returns true.
+     */
+    private function validate() : bool {
+        $is_valid = wp_verify_nonce( $this->get_nonce(), $this->get_action() );
+        if ( false === $is_valid ) {
+            return $is_valid;
+        } else {
+            return true;
+        }
+    }
+
+
+    /**
+     * Validate the nonce from the request.
+     *
+     * @return bool
+     */
+    public function validate_request() {
+        $is_valid = false;
+        if ( isset( $_REQUEST[ $this->get_name() ] ) ) {
+            $nonce_received = sanitize_text_field( wp_unslash( $_REQUEST[ $this->get_name() ] ) );
+            $this->set_nonce( $nonce_received );
+            $is_valid = $this->validate();
+        }
+        return $is_valid;
+    }
+
+    /**
+     * Validate nonce
+     *
+     * @param $param_nonce
+     * @return bool
+     */
+    public function validate_nonce($param_nonce ) {
+        $is_valid = false;
+
+        $this->set_nonce( $param_nonce );
+        $is_valid = $this->validate();
+        return $is_valid;
+    }
   
 
 }

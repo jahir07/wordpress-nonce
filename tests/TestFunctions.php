@@ -104,3 +104,24 @@ function wp_nonce_url($actionurl, $action = -1, $name = '_wpnonce' ) {
     return esc_html( add_query_arg( $name, wp_create_nonce( $action ), $actionurl ) );
 }
 
+
+/**
+ * wp_unslash() function.
+ *
+ * @param string $text Text value.
+ * @return string $text The text value in input.
+ */
+function wp_unslash( $text ) {
+    return $text;
+}
+
+/**
+ * sanitize_text_field() function.
+ *
+ * @param string $text Text value.
+ * @return string $text The text value in input.
+ */
+function sanitize_text_field( $text ) {
+    return $text;
+}
+

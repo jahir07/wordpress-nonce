@@ -193,6 +193,33 @@ class WPNonceTest extends TestCase
         $this->assertSame( $field_results, $url_expected);
     }
 
+    /**
+     * Test the validate_nonce method used for the straight validation of the nonce.
+     */
+    public function test_validate_nonce() {
+        // Check validating method.
+        $is_valid = $this->test_gen1->validate_nonce( $this->test_nonce );
+        $this->assertTrue( $is_valid );
+        $is_valid = $this->test_gen1->validate_nonce( $this->test_nonce . 'failure' );
+
+        // Check failure on validating.
+        $this->assertFalse( $is_valid );
+    }
+
+    /**
+     * Test the validate_nonce method used for the validation of the nonce through the $_REQUEST.
+     */
+    public function test_validate_request() {
+        $test_name = '_wpnonce';
+        // Build the $_REQUEST
+        $_REQUEST[ $test_name ] = $this->test_nonce;
+        // Checking validation method.
+        $is_valid = $this->test_gen1->validate_request();
+        $this->assertTrue( $is_valid );
+        $_REQUEST[ $test_name ] = $this->test_nonce . 'failure';
+        $is_valid = $this->test_gen1->validate_request();
+        $this->assertFalse( $is_valid );
+    }
 
 }
 
