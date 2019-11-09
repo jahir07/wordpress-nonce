@@ -55,6 +55,45 @@ class WPNonceTest extends TestCase
 	}
 
 
+	 /**
+     * Test the getter and setter for the action property.
+     */
+    public function test_get_set_action() {
+        $ng = $this->test_gen2;
+        // Check the getter.
+        $this->assertSame( $this->test_action, $ng->get_action() );
+        // Check the setter.
+        $action = $ng->set_action( 'new_action' );
+        $this->assertSame( $ng->get_action(), $action );
+    }
+
+    /**
+     * Test the getter and setter for the name property.
+     */
+    public function test_get_set_name() {
+        $ng = $this->test_gen2;
+        // Check the getter.
+        $this->assertSame( $this->test_name, $ng->get_name() );
+        // Check the setter.
+        $name = $ng->set_name( 'new_name' );
+        $this->assertSame( $ng->get_name(), $name );
+    }
+
+    /**
+     * Test the getter and setter for the name property when default value in the constructor is used.
+     */
+    public function test_default_name() {
+        $ng = new WPNonce( 'another_action' );
+
+        // Check the action property getter.
+        $this->assertSame( 'another_action', $ng->get_action() );
+
+        // Check the name property getter: the name value now is the default one.
+        $this->assertSame( '_wpnonce', $ng->get_name() );
+    }
+
+    
+
 
 }
 
